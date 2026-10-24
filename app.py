@@ -4,28 +4,53 @@ import requests
 # Page Configuration for Embedded View
 st.set_page_config(page_title="US Water & Air Quality Lookup", page_icon="💧", layout="centered")
 
-# Custom CSS for Embed Cleanliness & Card Styling
+# Custom CSS for Seamless Embed Integration
 st.markdown("""
     <style>
+    /* Force background transparency & remove default Streamlit margins */
     .stApp { 
-        background-color: #F8FAFC; 
+        background-color: transparent !important; 
     }
+    .main .block-container {
+        padding-top: 1rem !important;
+        padding-bottom: 1rem !important;
+        max-width: 100% !important;
+    }
+    
+    /* Clean Card Styling matching web landing pages */
     .card {
         background-color: #FFFFFF;
         padding: 1.25rem;
-        border-radius: 10px;
+        border-radius: 12px;
         border: 1px solid #E2E8F0;
         margin-bottom: 1rem;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
     }
+    
+    /* Style Headings and Inputs */
+    h1, h2, h3, h4, p, span {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    
+    /* Style Primary Action Button */
     .stButton>button {
         width: 100%;
         background-color: #2563EB;
         color: white;
         border-radius: 8px;
-        padding: 0.5rem 1rem;
+        padding: 0.6rem 1rem;
         font-weight: 600;
+        border: none;
     }
+    .stButton>button:hover {
+        background-color: #1D4ED8;
+        color: white;
+    }
+    
+    /* Hide Streamlit footer branding if present */
+    footer {visibility: hidden;}
+    #MainMenu {visibility: hidden;}
+    header {visibility: hidden;}
     </style>
 """, unsafe_allow_html=True)
 
