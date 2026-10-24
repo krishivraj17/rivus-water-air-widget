@@ -4,53 +4,65 @@ import requests
 # Page Configuration for Embedded View
 st.set_page_config(page_title="US Water & Air Quality Lookup", page_icon="💧", layout="centered")
 
-# Custom CSS for Seamless Embed Integration
+# CSS: Transparent Dark Theme with Glassmorphism Cards
 st.markdown("""
     <style>
-    /* Force background transparency & remove default Streamlit margins */
-    .stApp { 
-        background-color: transparent !important; 
+    /* Force entire Streamlit app background to fully transparent */
+    .stApp, .stAppHeader, [data-testid="stHeader"], [data-testid="stToolbar"], .main {
+        background-color: transparent !important;
+        background: transparent !important;
     }
     .main .block-container {
-        padding-top: 1rem !important;
-        padding-bottom: 1rem !important;
+        padding-top: 0.5rem !important;
+        padding-bottom: 0.5rem !important;
         max-width: 100% !important;
     }
-    
-    /* Clean Card Styling matching web landing pages */
-    .card {
-        background-color: #FFFFFF;
-        padding: 1.25rem;
-        border-radius: 12px;
-        border: 1px solid #E2E8F0;
-        margin-bottom: 1rem;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-    }
-    
-    /* Style Headings and Inputs */
-    h1, h2, h3, h4, p, span {
+
+    /* Force all text elements to crisp off-white for dark backgrounds */
+    h1, h2, h3, h4, label, p, span, caption, .stMarkdown {
+        color: #F8FAFC !important;
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
-    
-    /* Style Primary Action Button */
+
+    /* Semi-transparent dark glass card container */
+    .card {
+        background: rgba(30, 41, 59, 0.75) !important;
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        padding: 1.25rem;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        margin-bottom: 1rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    }
+
+    /* Input Box styling for Dark Backgrounds */
+    .stTextInput input {
+        background-color: rgba(30, 41, 59, 0.85) !important;
+        color: #FFFFFF !important;
+        border: 1px solid rgba(255, 255, 255, 0.2) !important;
+        border-radius: 8px !important;
+    }
+    .stTextInput input:focus {
+        border-color: #3B82F6 !important;
+    }
+
+    /* Action Button styling */
     .stButton>button {
         width: 100%;
-        background-color: #2563EB;
-        color: white;
-        border-radius: 8px;
-        padding: 0.6rem 1rem;
-        font-weight: 600;
-        border: none;
+        background-color: #2563EB !important;
+        color: #FFFFFF !important;
+        border-radius: 8px !important;
+        padding: 0.6rem 1rem !important;
+        font-weight: 600 !important;
+        border: none !important;
     }
     .stButton>button:hover {
-        background-color: #1D4ED8;
-        color: white;
+        background-color: #1D4ED8 !important;
     }
-    
-    /* Hide Streamlit footer branding if present */
-    footer {visibility: hidden;}
-    #MainMenu {visibility: hidden;}
-    header {visibility: hidden;}
+
+    /* Hide Streamlit Chrome & Footers */
+    footer, #MainMenu, header { visibility: hidden !important; }
     </style>
 """, unsafe_allow_html=True)
 
